@@ -16,4 +16,13 @@
     <PackageReference Include="Xamarin.Essentials" Version="1.0.0" />
     <PackageReference Include="Xamarin.Forms" Version="3.4.0.1008975" />  
   </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Views\SearchTab.xaml.cs">
+      <DependentUpon>SearchTab.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\CurrentLocationTab.xaml.cs">
+      <DependentUpon>CurrentLocationTab.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
 </Project>
