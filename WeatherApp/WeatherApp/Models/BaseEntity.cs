@@ -1,9 +1,7 @@
-﻿using System;
-
-namespace WeatherApp.Models
+﻿namespace WeatherApp.Models
 {
     public class BaseEntity
     {
-        public Guid Id { get; set; }
+        public int Id { get; set; }
     }
 }
