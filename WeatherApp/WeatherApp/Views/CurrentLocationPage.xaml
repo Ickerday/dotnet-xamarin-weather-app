@@ -1,29 +1,37 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
+
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WeatherApp.Views.CurrentLocationPage"
              Title="{Binding Title}">
-    <StackLayout Spacing="20" Padding="5">
-        <FlexLayout>
-            <Label x:Name="CityName" />
-            <Label x:Name="CountryName"/>
-        </FlexLayout>
+    <StackLayout Spacing="5"
+                 Padding="5, 0">
+        <Label HorizontalOptions="Center"
+               VerticalOptions="CenterAndExpand"
+               Text="{Binding Name}" />
+        <Label HorizontalOptions="Center"
+               VerticalOptions="CenterAndExpand"
+               Text="{Binding Country}" />
         <TableView>
             <TableRoot>
                 <TableSection>
-                    <TextCell x:Name="LatitudeCell" Text="Latitude" Detail="{Binding Forecast.Latitude}" />
+                    <TextCell Text="Latitude"
+                              Detail="{Binding Latitude}" />
                 </TableSection>
                 <TableSection>
-                    <TextCell x:Name="LongitudeCell" Text="Longitude" Detail="{Binding Forecast.Longitude}" />
+                    <TextCell Text="Longitude"
+                              Detail="{Binding Longitude}" />
                 </TableSection>
                 <TableSection>
-                    <TextCell x:Name="HumidityCell" Text="Humidity" Detail="{Binding Forecast.Humidity}" />
+                    <TextCell Text="Humidity"
+                              Detail="{Binding Humidity}" />
                 </TableSection>
                 <TableSection>
-                    <TextCell x:Name="TemperatureCell" Text="Temperature" Detail="{Binding Forecast.Temperature} {Binding Forecast.TemperatureUnit}" />
+                    <TextCell Text="Temperature"
+                              Detail="{Binding TemperatureString}" />
                 </TableSection>
             </TableRoot>
         </TableView>
-        <Button Text="Get weather from my location" Clicked="OnGetWeatherButtonClicked"/>
+        <Button Text="Refresh" Clicked="OnGetWeatherButtonClicked" />
     </StackLayout>
 </ContentPage>

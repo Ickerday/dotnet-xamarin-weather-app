@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using WeatherApp.Exceptions;
 using WeatherApp.ViewModels;
 using Xamarin.Forms;
@@ -15,13 +15,16 @@ namespace WeatherApp.Views
         {
             BindingContext = _viewModel = new CurrentLocationPageViewModel();
             InitializeComponent();
+
+            _viewModel.GetForecastForCurrentLocation()
+                .Wait();
         }
 
         protected async void OnGetWeatherButtonClicked(object sender, EventArgs args)
         {
             try
             {
-                await _viewModel.GetWeatherForLocation();
+                await _viewModel.GetForecastForCurrentLocation();
             }
             catch (Exception ex)
             {
