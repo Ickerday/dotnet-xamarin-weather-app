@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WeatherApp.Views.CurrentLocationPage"
+             Title="{Binding Title}">
+    <StackLayout Spacing="20" Padding="5">
+        <FlexLayout>
+            <Label x:Name="CityName" />
+            <Label x:Name="CountryName"/>
+        </FlexLayout>
+        <TableView>
+            <TableRoot>
+                <TableSection>
+                    <TextCell x:Name="LatitudeCell" Text="Latitude" Detail="{Binding Forecast.Latitude}" />
+                </TableSection>
+                <TableSection>
+                    <TextCell x:Name="LongitudeCell" Text="Longitude" Detail="{Binding Forecast.Longitude}" />
+                </TableSection>
+                <TableSection>
+                    <TextCell x:Name="HumidityCell" Text="Humidity" Detail="{Binding Forecast.Humidity}" />
+                </TableSection>
+                <TableSection>
+                    <TextCell x:Name="TemperatureCell" Text="Temperature" Detail="{Binding Forecast.Temperature} {Binding Forecast.TemperatureUnit}" />
+                </TableSection>
+            </TableRoot>
+        </TableView>
+        <Button Text="Get weather from my location" Clicked="OnGetWeatherButtonClicked"/>
+    </StackLayout>
+</ContentPage>

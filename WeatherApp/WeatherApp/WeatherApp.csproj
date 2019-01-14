@@ -18,11 +18,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Views\SearchTab.xaml.cs">
-      <DependentUpon>SearchTab.xaml</DependentUpon>
+    <Compile Update="Views\SearchPage.xaml.cs">
+      <DependentUpon>SearchPage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\CurrentLocationTab.xaml.cs">
-      <DependentUpon>CurrentLocationTab.xaml</DependentUpon>
+    <Compile Update="Views\CurrentLocationPage.xaml.cs">
+      <DependentUpon>CurrentLocationPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 </Project>

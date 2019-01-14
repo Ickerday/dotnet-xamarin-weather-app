@@ -8,6 +8,7 @@ namespace WeatherApp.Views
     {
         public MainPage()
         {
+            Title = "Skyline";
             InitializeComponent();
         }
     }
