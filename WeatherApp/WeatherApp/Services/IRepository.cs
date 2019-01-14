@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace WeatherApp.Services
 {
-    public interface IDataStore<in TKey, TValue>
+    public interface IRepository<in TKey, TValue>
     {
         Task<IEnumerable<TValue>> GetAsync();
         Task<TValue> GetAsync(TKey id);
