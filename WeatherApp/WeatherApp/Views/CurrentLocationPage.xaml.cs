@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using WeatherApp.Exceptions;
 using WeatherApp.ViewModels;
 using Xamarin.Forms;
@@ -25,7 +25,7 @@ namespace WeatherApp.Views
             }
             catch (Exception ex)
             {
-                throw new AppException("", ex);
+                throw new AppException("Couldn't get weather for your location.", ex);
             }
         }
     }
