@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using System.Threading.Tasks;
 using WeatherApp.Exceptions;
 using Xamarin.Essentials;
@@ -21,7 +22,7 @@ namespace WeatherApp.Services
             try
             {
                 var request = new GeolocationRequest(GeolocationAccuracy.Medium, Timeout);
-                return await Geolocation.GetLocationAsync(request)
+                return await Geolocation.GetLocationAsync(request, CancellationToken.None)
                        ?? await Geolocation.GetLastKnownLocationAsync();
             }
             catch (FeatureNotSupportedException ex)
