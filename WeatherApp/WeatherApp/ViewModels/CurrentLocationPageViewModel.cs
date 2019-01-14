@@ -1,4 +1,4 @@
-﻿using MvvmHelpers;
+using MvvmHelpers;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
@@ -17,7 +17,7 @@ namespace WeatherApp.ViewModels
 
         public CurrentLocationPageViewModel()
         {
-            Title = "Current Location";
+            Title = "Current location";
             _weatherService = new WeatherApiService();
             _locationService = new LocationService();
             _forecastRepository = new ForecastRepository(App.Database);

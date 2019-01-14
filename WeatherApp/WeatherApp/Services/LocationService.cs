@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Threading;
 using System.Threading.Tasks;
 using WeatherApp.Exceptions;
 using Xamarin.Essentials;
@@ -8,20 +7,21 @@ namespace WeatherApp.Services
 {
     public interface ILocationService
     {
-        Task<Location> GetCurrentOrLastLocation(CancellationToken cancellationToken);
+        Task<Location> GetCurrentOrLastLocation();
     }
 
     public class LocationService : ILocationService
     {
         private const string CallToSearchAction = "Use the Search tab to find your location manually";
-        public TimeSpan Timeout = new TimeSpan(0, 0, 3);
 
-        public async Task<Location> GetCurrentOrLastLocation(CancellationToken cancellationToken)
+        public TimeSpan Timeout { get; set; } = new TimeSpan(0, 0, 3);
+
+        public async Task<Location> GetCurrentOrLastLocation()
         {
             try
             {
                 var request = new GeolocationRequest(GeolocationAccuracy.Medium, Timeout);
-                return await Geolocation.GetLocationAsync(request, cancellationToken)
+                return await Geolocation.GetLocationAsync(request)
                        ?? await Geolocation.GetLastKnownLocationAsync();
             }
             catch (FeatureNotSupportedException ex)

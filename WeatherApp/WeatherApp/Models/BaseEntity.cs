@@ -4,8 +4,7 @@ namespace WeatherApp.Models
 {
     public class BaseEntity
     {
-        [PrimaryKey]
-        [AutoIncrement]
+        [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
     }
 }

@@ -1,6 +1,5 @@
 ﻿using SQLite;
 using WeatherApp.Models;
-using Xamarin.Essentials;
 
 namespace WeatherApp.Infrastructure
 {
@@ -8,7 +7,6 @@ namespace WeatherApp.Infrastructure
     {
         public WeatherContext(string dbPath) : base(dbPath)
         {
-            CreateTableAsync<Location>().Wait();
             CreateTableAsync<Forecast>().Wait();
         }
     }
