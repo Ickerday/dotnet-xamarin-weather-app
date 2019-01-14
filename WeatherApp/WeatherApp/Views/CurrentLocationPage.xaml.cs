@@ -15,9 +15,6 @@ namespace WeatherApp.Views
         {
             BindingContext = _viewModel = new CurrentLocationPageViewModel();
             InitializeComponent();
-
-            _viewModel.GetForecastForCurrentLocation()
-                .Wait();
         }
 
         protected async void OnGetWeatherButtonClicked(object sender, EventArgs args)
