@@ -17,15 +17,8 @@ namespace WeatherApp
 
         public App()
         {
-            try
-            {
-                InitializeComponent();
-                MainPage = new MainPage();
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
+            InitializeComponent();
+            MainPage = new MainPage();
         }
 
         protected override void OnStart()
