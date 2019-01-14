@@ -11,4 +11,3 @@ namespace WeatherApp.Exceptions
         public AppException(string message, Exception innerException) : base(message, innerException) { }
     }
 }
-}
