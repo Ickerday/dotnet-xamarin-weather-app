@@ -11,13 +11,13 @@ namespace WeatherApp.Services
         [Path("apiKey")]
         string ApiKey { get; set; }
 
-        [Get("weather?q={cityName}&appid={apiKey}")]
+        [Get("weather?q={cityName}&units=metric&appid={apiKey}")]
         Task<string> GetByCityNameAsync([Path("cityName")] string cityName);
 
-        [Get("weather?q={id}&appId={apiKey}")]
+        [Get("weather?q={id}&units=metric&appId={apiKey}")]
         Task<string> GetByIdAsync([Path("id")] int id);
 
-        [Get("weather?lat={latitude}&lon={longitude}&appId={apiKey}")]
+        [Get("weather?lat={latitude}&lon={longitude}&units=metric&appId={apiKey}")]
         Task<ApiResult> GetByLocationAsync([Path("latitude")] float latitude, [Path("longitude")] float longitude);
     }
 

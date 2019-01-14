@@ -12,7 +12,7 @@ namespace WeatherApp.Models
         public virtual double Latitude { get; set; }
         public virtual double Longitude { get; set; }
         public virtual double Temperature { get; set; }
-        public virtual string TemperatureUnit { get; set; } = "Fahrenheit";
+        public virtual string TemperatureUnit { get; set; } = "Celsius";
         public virtual int Humidity { get; set; }
         public virtual DateTime CheckedAt { get; set; } = DateTime.Now;
 
@@ -27,8 +27,6 @@ namespace WeatherApp.Models
                     Longitude = location.Longitude,
                     Humidity = weather.Main.Humidity,
                     Temperature = weather.Main.Temp,
-                    TemperatureUnit = "Fahrenheit",
-                    CheckedAt = DateTime.Now
                 };
             throw new AppException("Cannot create instance of Forecast. Some of the parameters are null.");
         }
