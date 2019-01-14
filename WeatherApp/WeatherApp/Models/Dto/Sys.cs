@@ -1,12 +1,11 @@
-﻿namespace WeatherApp.Models
+﻿namespace WeatherApp.Models.Dto
 {
-    public class Sys
+    public class Sys : BaseEntity
     {
-        public int Id { get; set; }
-        public int Type { get; set; }
-        public double Message { get; set; }
-        public string Country { get; set; }
-        public int Sunrise { get; set; }
-        public int Sunset { get; set; }
+        public virtual int Type { get; set; }
+        public virtual double Message { get; set; }
+        public virtual string Country { get; set; }
+        public virtual int Sunrise { get; set; }
+        public virtual int Sunset { get; set; }
     }
 }

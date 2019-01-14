@@ -2,6 +2,6 @@
 {
     public class Clouds
     {
-        public int All { get; set; }
+        public virtual int All { get; set; }
     }
 }

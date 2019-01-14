@@ -2,10 +2,10 @@
 {
     public class Atmosphere
     {
-        public double Temp { get; set; }
-        public int Pressure { get; set; }
-        public int Humidity { get; set; }
-        public double TempMin { get; set; }
-        public double TempMax { get; set; }
+        public virtual double Temp { get; set; }
+        public virtual int Pressure { get; set; }
+        public virtual int Humidity { get; set; }
+        public virtual double TempMin { get; set; }
+        public virtual double TempMax { get; set; }
     }
 }

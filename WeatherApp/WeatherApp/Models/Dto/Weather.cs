@@ -1,10 +1,9 @@
 ﻿namespace WeatherApp.Models.Dto
 {
-    public class Weather
+    public class Weather : BaseEntity
     {
-        public int Id { get; set; }
-        public string Main { get; set; }
-        public string Description { get; set; }
-        public string Icon { get; set; }
+        public virtual string Main { get; set; }
+        public virtual string Description { get; set; }
+        public virtual string Icon { get; set; }
     }
 }

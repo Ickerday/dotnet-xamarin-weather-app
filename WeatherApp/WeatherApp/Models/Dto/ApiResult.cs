@@ -2,19 +2,19 @@
 
 namespace WeatherApp.Models.Dto
 {
-    public class ApiResult
+    public class ApiResult : BaseEntity
     {
-        public int Id { get; set; }
-        public Coord Coord { get; set; }
-        public IEnumerable<Weather> Weather { get; set; }
-        public string Base { get; set; }
-        public Atmosphere Atmosphere { get; set; }
-        public int Visibility { get; set; }
-        public Wind Wind { get; set; }
-        public Clouds Clouds { get; set; }
-        public int Dt { get; set; }
-        public Sys Sys { get; set; }
-        public string Name { get; set; }
-        public int Cod { get; set; }
+        public virtual Coord Coord { get; set; }
+        public virtual IEnumerable<Weather> Weather { get; set; }
+        public virtual string Base { get; set; }
+        public virtual Atmosphere Main { get; set; }
+        public virtual int Visibility { get; set; }
+        public virtual Wind Wind { get; set; }
+        public virtual Clouds Clouds { get; set; }
+        public virtual double Dt { get; set; }
+        public virtual Sys Sys { get; set; }
+        public virtual string Name { get; set; }
+        public virtual int Cod { get; set; }
+        public virtual string Message { get; set; }
     }
 }

@@ -2,7 +2,7 @@
 {
     public class Wind
     {
-        public double Speed { get; set; }
-        public int Deg { get; set; }
+        public virtual double Speed { get; set; }
+        public virtual double Deg { get; set; }
     }
 }
