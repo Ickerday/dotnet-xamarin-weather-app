@@ -5,7 +5,14 @@ using WeatherApp.Models;
 
 namespace WeatherApp.Services
 {
-    public class ForecastRepository : IRepository<int, Forecast>
+    public interface IRepository<TValue>
+    {
+        Task<IEnumerable<TValue>> GetAsync();
+        Task<TValue> GetLast();
+        Task<int> SaveAsync(TValue item);
+    }
+
+    public class ForecastRepository : IRepository<Forecast>
     {
         private readonly WeatherContext _database;
 
@@ -15,13 +22,12 @@ namespace WeatherApp.Services
         public async Task<IEnumerable<Forecast>> GetAsync() => await _database.Table<Forecast>()
             .ToArrayAsync();
 
-        public async Task<Forecast> GetAsync(int id) => await _database.GetAsync<Forecast>(x => x.Id == id);
+        public async Task<Forecast> GetLast() => await _database.Table<Forecast>()
+                .OrderByDescending(x => x.CheckedAt)
+                .FirstOrDefaultAsync();
 
         public async Task<int> SaveAsync(Forecast item) => await _database.FindAsync<Forecast>(item.Id) != null
             ? await _database.UpdateAsync(item)
             : await _database.InsertAsync(item);
-
-        public async Task<int> DeleteAsync(int id) =>
-            await _database.DeleteAsync<Forecast>(id);
     }
 }
