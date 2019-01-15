@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.IO;
 using WeatherApp.Infrastructure;
 using WeatherApp.Views;
@@ -27,6 +27,7 @@ namespace WeatherApp
 
         protected override void OnStart()
         {
+            _masterDetailPage.OnStart();
         }
 
         protected override void OnSleep()
