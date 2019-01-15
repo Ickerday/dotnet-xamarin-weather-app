@@ -2,7 +2,7 @@
 
 namespace WeatherApp.Models.Dto
 {
-    public class ApiResult : BaseEntity
+    public class ApiResult : EntityBase
     {
         public virtual Coord Coord { get; set; }
         public virtual IEnumerable<Weather> Weather { get; set; }

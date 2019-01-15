@@ -1,6 +1,6 @@
 ﻿namespace WeatherApp.Models.Dto
 {
-    public class Sys : BaseEntity
+    public class Sys : EntityBase
     {
         public virtual int Type { get; set; }
         public virtual double Message { get; set; }
