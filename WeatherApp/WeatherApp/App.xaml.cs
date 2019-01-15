@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using WeatherApp.Infrastructure;
 using WeatherApp.Views;
@@ -11,14 +11,18 @@ namespace WeatherApp
 {
     public partial class App : Application
     {
+        private static readonly string DbPath = Path.Combine(Environment.GetFolderPath(LocalApplicationData), "WeatherAppDb.db3");
+
         private static WeatherContext _database;
+        private readonly MainPage _masterDetailPage;
+
         public static WeatherContext Database => _database
-            ?? (_database = new WeatherContext(Path.Combine(Environment.GetFolderPath(LocalApplicationData), "WeatherAppDb.db3")));
+            ?? (_database = new WeatherContext(DbPath));
 
         public App()
         {
             InitializeComponent();
-            MainPage = new MainPage();
+            MainPage = _masterDetailPage = new MainPage();
         }
 
         protected override void OnStart()
