@@ -1,13 +1,12 @@
 ﻿using System;
-using WeatherApp.Exceptions;
+using System.Threading.Tasks;
 using WeatherApp.ViewModels;
-using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace WeatherApp.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class CurrentLocationPage : ContentPage
+    public partial class CurrentLocationPage
     {
         private readonly CurrentLocationPageViewModel _viewModel;
 
@@ -25,8 +24,26 @@ namespace WeatherApp.Views
             }
             catch (Exception ex)
             {
-                throw new AppException("Couldn't get weather for your location.", ex);
+                await DisplayAlert("Error", ex.Message, "Ok");
             }
+        }
+
+        public async Task OnInputFromMasterPageAsync(string name)
+        {
+            try
+            {
+                await _viewModel.GetForecastForCityName(name);
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Error", ex.Message, "Ok");
+            }
+        }
+
+        public void OnStart()
+        {
+            _viewModel.GetLastForecastFromDb()
+                .ConfigureAwait(false);
         }
     }
 }
