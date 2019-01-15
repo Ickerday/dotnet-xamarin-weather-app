@@ -2,8 +2,12 @@
 using Android.Content.PM;
 using Android.OS;
 using Android.Runtime;
+using Android.Widget;
 using System;
-using Xamarin.Essentials;
+using Xamarin.Forms;
+using Xamarin.Forms.Platform.Android;
+using Application = Android.App.Application;
+using Platform = Xamarin.Essentials.Platform;
 
 namespace WeatherApp.Droid
 {
@@ -12,32 +16,31 @@ namespace WeatherApp.Droid
         Theme = "@style/MainTheme",
         MainLauncher = true,
         ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
-    public class MainActivity : Xamarin.Forms.Platform.Android.FormsAppCompatActivity
+    public class MainActivity : FormsAppCompatActivity
     {
-        internal MainActivity Instance { get; private set; }
-
         protected override void OnCreate(Bundle savedInstanceState)
         {
             try
             {
                 TabLayoutResource = Resource.Layout.Tabbar;
                 ToolbarResource = Resource.Layout.Toolbar;
-
                 base.OnCreate(savedInstanceState);
-                Instance = this;
-                Xamarin.Forms.Forms.Init(this, savedInstanceState);
+
+                Forms.Init(this, savedInstanceState);
                 Platform.Init(this, savedInstanceState);
 
                 LoadApplication(new App());
             }
             catch (Exception ex)
             {
-                // ignored
+                Toast.MakeText(Application.Context, ex.Message, ToastLength.Short)
+                    .Show();
             }
         }
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)
         {
+            // Required by Xamarin.Essentials
             Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
