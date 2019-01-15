@@ -3,14 +3,34 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WeatherApp.Views.SearchPage"
+             Padding="0,30,10,0"
+             Icon="hamburger.png"
              Title="{Binding Title}">
     <StackLayout Spacing="5" Padding="5">
         <Label HorizontalOptions="Start"
                VerticalOptions="Center"
-               Text="Enter a city:" />
-        <Entry Placeholder="City"
-               x:Name="CityEntry" />
-        <Button Text="Search"
-                Clicked="OnSearchButtonClickedAsync" />
+               Text="Enter a city:"
+               FontSize="Large" />
+        <Entry x:Name="CityEntry"
+               x:FieldModifier="public"
+               Placeholder="e.g. Warsaw, PL" />
+        <Button x:Name="SearchButton"
+                x:FieldModifier="public"
+                Text="Search" />
+        <Label Text="History:" Margin="5,0" />
+        <ListView x:Name="PreviousCitiesListView"
+                  x:FieldModifier="public"
+                  ItemsSource="{Binding PreviousCities}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Label HorizontalOptions="CenterAndExpand"
+                               VerticalOptions="Center"
+                               Text="{Binding Name}" />
+
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </StackLayout>
 </ContentPage>

@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
-            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-            xmlns:views="clr-namespace:WeatherApp.Views"
-            x:Class="WeatherApp.Views.MainPage">
-    <TabbedPage.Children>
-        <NavigationPage Title="Current Location">
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                  xmlns:views="clr-namespace:WeatherApp.Views"
+                  x:Class="WeatherApp.Views.MainPage"
+                  MasterBehavior="Popover">
+    <MasterDetailPage.Master>
+        <views:SearchPage x:Name="SearchMaster" />
+    </MasterDetailPage.Master>
+    <MasterDetailPage.Detail>
+        <NavigationPage>
             <x:Arguments>
-                <views:CurrentLocationPage />
+                <views:CurrentLocationPage x:Name="LocationDetail" x:FieldModifier="public" />
             </x:Arguments>
         </NavigationPage>
-        <NavigationPage Title="Search">
-            <x:Arguments>
-                <views:SearchPage />
-            </x:Arguments>
-        </NavigationPage>
-    </TabbedPage.Children>
-</TabbedPage>
+    </MasterDetailPage.Detail>
+</MasterDetailPage>
