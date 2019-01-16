@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using WeatherApp.ViewModels;
 using Xamarin.Forms.Xaml;
 
@@ -15,6 +15,7 @@ namespace WeatherApp.Views
             InitializeComponent();
 
             CityEntry.Completed += OnSearchCompleted;
+            ClearHistoryButton.Clicked += OnClearHistoryButtonClicked;
         }
 
         public void OnStart()
@@ -22,6 +23,9 @@ namespace WeatherApp.Views
             _viewModel.GetForecastHistoryAsync()
                 .ConfigureAwait(false);
         }
+
+        private async void OnClearHistoryButtonClicked(object sender, EventArgs e) =>
+            await _viewModel.ClearForecastHistory();
 
         private void OnSearchCompleted(object sender, EventArgs e)
         {

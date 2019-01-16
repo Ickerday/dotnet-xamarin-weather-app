@@ -32,5 +32,6 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        <Button x:Name="ClearHistoryButton" Text="Clear History"/>
     </StackLayout>
 </ContentPage>

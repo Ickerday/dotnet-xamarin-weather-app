@@ -1,5 +1,11 @@
-using MvvmHelpers;
+﻿using MvvmHelpers;
+using System;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.Threading.Tasks;
+using WeatherApp.Exceptions;
+using WeatherApp.Models;
+using WeatherApp.Services;
 
 namespace WeatherApp.ViewModels
 {
@@ -13,16 +19,15 @@ namespace WeatherApp.ViewModels
 
     public class SearchPageViewModel : BaseViewModel
     {
+        private readonly IRepository<Forecast> _forecastRepository;
+
         public ObservableCollection<SearchPageListItem> PreviousCities { get; set; }
 
         public SearchPageViewModel()
         {
             Title = "Find city";
-            PreviousCities = new ObservableCollection<SearchPageListItem>
-            {
-                new SearchPageListItem("Kyoto, JP"),
-                new SearchPageListItem("Seattle, US")
-            };
+            _forecastRepository = new ForecastRepository(App.Database);
+            PreviousCities = new ObservableCollection<SearchPageListItem>();
         }
 
         public void AddToPreviousCities(string cityName)
@@ -31,6 +36,23 @@ namespace WeatherApp.ViewModels
                 return;
 
             PreviousCities.Add(new SearchPageListItem(cityName));
+        }
+
+        public async Task GetForecastHistoryAsync()
+        {
+            try
+            {
+                var history = await _forecastRepository.GetAsync();
+                var listItems = history.Select(f => new SearchPageListItem($"{f.Name}, {f.Country}"));
+
+                PreviousCities.Clear();
+                foreach (var item in listItems)
+                    PreviousCities.Add(item);
+            }
+            catch (Exception ex)
+            {
+                throw new AppException("Couldn't get forecast history.", ex);
+            }
         }
 
         public async Task ClearForecastHistory()
