@@ -26,10 +26,9 @@ namespace WeatherApp.Droid
                 TabLayoutResource = Resource.Layout.Tabbar;
                 ToolbarResource = Resource.Layout.Toolbar;
                 base.Window.RequestFeature(WindowFeatures.ActionBar);
-
-                base.OnCreate(savedInstanceState);
                 base.SetTheme(Resource.Style.MainTheme);
 
+                base.OnCreate(savedInstanceState);
                 Forms.Init(this, savedInstanceState);
                 Platform.Init(this, savedInstanceState);
 

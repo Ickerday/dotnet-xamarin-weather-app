@@ -16,7 +16,7 @@ namespace WeatherApp.Views
             InitializeComponent();
         }
 
-        protected async void OnGetWeatherButtonClicked(object sender, EventArgs args)
+        protected async void OnGetWeatherButtonClickedAsync(object sender, EventArgs args)
         {
             try
             {

@@ -4,15 +4,15 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WeatherApp.Views.CurrentLocationPage"
              Title="※ Weather">
-  <StackLayout Spacing="5" Padding="10"
+  <StackLayout Spacing="10" Padding="10"
                BackgroundColor="White">
-    <StackLayout Padding="5, 20"
+    <StackLayout Padding="10"
                  BackgroundColor="Accent">
-      <Label HorizontalOptions="EndAndExpand"
+      <Label HorizontalOptions="CenterAndExpand"
              VerticalOptions="CenterAndExpand"
              Text="{Binding Name}"
              FontSize="20" />
-      <Label HorizontalOptions="EndAndExpand"
+      <Label HorizontalOptions="CenterAndExpand"
              VerticalOptions="CenterAndExpand"
              Text="{Binding Country}"
              FontSize="Small" />
@@ -37,8 +37,8 @@
         </TableSection>
       </TableRoot>
     </TableView>
-    <Button Padding="10, 20"
+    <Button Padding="10"
             Text="Get from current location"
-            Clicked="OnGetWeatherButtonClicked" />
+            Clicked="OnGetWeatherButtonClickedAsync" />
   </StackLayout>
 </ContentPage>

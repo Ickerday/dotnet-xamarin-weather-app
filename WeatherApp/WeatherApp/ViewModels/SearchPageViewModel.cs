@@ -31,7 +31,6 @@ namespace WeatherApp.ViewModels
                 return;
 
             PreviousCities.Add(new SearchPageListItem(cityName));
-            OnPropertyChanged(nameof(PreviousCities));
         }
     }
 }
