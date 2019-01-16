@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using WeatherApp.ViewModels;
 using Xamarin.Forms.Xaml;
 
@@ -15,6 +15,12 @@ namespace WeatherApp.Views
             InitializeComponent();
 
             CityEntry.Completed += OnSearchCompleted;
+        }
+
+        public void OnStart()
+        {
+            _viewModel.GetForecastHistoryAsync()
+                .ConfigureAwait(false);
         }
 
         private void OnSearchCompleted(object sender, EventArgs e)

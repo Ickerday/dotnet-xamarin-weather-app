@@ -1,4 +1,4 @@
-﻿using MvvmHelpers;
+using MvvmHelpers;
 using System.Collections.ObjectModel;
 
 namespace WeatherApp.ViewModels
@@ -31,6 +31,19 @@ namespace WeatherApp.ViewModels
                 return;
 
             PreviousCities.Add(new SearchPageListItem(cityName));
+        }
+
+        public async Task ClearForecastHistory()
+        {
+            try
+            {
+                await _forecastRepository.ClearAsync();
+                PreviousCities.Clear();
+            }
+            catch (Exception ex)
+            {
+                throw new AppException("Couldn't clear history.", ex);
+            }
         }
     }
 }

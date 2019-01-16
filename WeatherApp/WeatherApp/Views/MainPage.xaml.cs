@@ -20,6 +20,7 @@ namespace WeatherApp.Views
         public void OnStart()
         {
             LocationDetail.OnStart();
+            SearchMaster.OnStart();
         }
 
         public async void OnPreviousCitySelected(object sender, SelectedItemChangedEventArgs e)
