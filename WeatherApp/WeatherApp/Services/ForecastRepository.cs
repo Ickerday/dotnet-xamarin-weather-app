@@ -10,6 +10,7 @@ namespace WeatherApp.Services
         Task<IEnumerable<TValue>> GetAsync();
         Task<TValue> GetLast();
         Task<int> SaveAsync(TValue item);
+        Task<int> ClearAsync();
     }
 
     public class ForecastRepository : IRepository<Forecast>
@@ -29,5 +30,7 @@ namespace WeatherApp.Services
         public async Task<int> SaveAsync(Forecast item) => await _database.FindAsync<Forecast>(item.Id) != null
             ? await _database.UpdateAsync(item)
             : await _database.InsertAsync(item);
+
+        public async Task<int> ClearAsync() => await _database.DeleteAllAsync<Forecast>();
     }
 }
