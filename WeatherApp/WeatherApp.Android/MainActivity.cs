@@ -2,6 +2,7 @@
 using Android.Content.PM;
 using Android.OS;
 using Android.Runtime;
+using Android.Views;
 using Android.Widget;
 using System;
 using Xamarin.Forms;
@@ -11,9 +12,9 @@ using Platform = Xamarin.Essentials.Platform;
 
 namespace WeatherApp.Droid
 {
-    [Activity(Label = "WeatherApp",
+    [Activity(Label = "Weather",
         Icon = "@mipmap/icon",
-        Theme = "@style/MainTheme",
+        Theme = "@style/MainTheme.Splash",
         MainLauncher = true,
         ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : FormsAppCompatActivity
@@ -24,7 +25,10 @@ namespace WeatherApp.Droid
             {
                 TabLayoutResource = Resource.Layout.Tabbar;
                 ToolbarResource = Resource.Layout.Toolbar;
+                base.Window.RequestFeature(WindowFeatures.ActionBar);
+
                 base.OnCreate(savedInstanceState);
+                base.SetTheme(Resource.Style.MainTheme);
 
                 Forms.Init(this, savedInstanceState);
                 Platform.Init(this, savedInstanceState);
@@ -38,7 +42,8 @@ namespace WeatherApp.Droid
             }
         }
 
-        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)
+        public override void OnRequestPermissionsResult(int requestCode, string[] permissions,
+            [GeneratedEnum] Permission[] grantResults)
         {
             // Required by Xamarin.Essentials
             Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);

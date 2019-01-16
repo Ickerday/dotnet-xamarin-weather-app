@@ -20,6 +20,7 @@ Just follow the generic procedures to set up Xamarin on your local environment. 
 - Querying device for current GPS location
 - SQLite persistence service for forecasts
 - Simple error handling - app exceptions display as toasts
+- Splash image
 
 ## Ideas for extension
 
@@ -30,7 +31,7 @@ Just follow the generic procedures to set up Xamarin on your local environment. 
 - Storing OpenWeatherApi API key someplace safer
 - Handle errors better?
 - Switch from RestEase to something quicker (reflection costs performance)
-- Performance in general?
-- Splash image
+- Performance in general
 - Test iOS, different Android APIs
-- Deployment on F-Droid - fix Release build
+- Fix Release build for potential deployment e.g. on F-Droid
+- Spinner on forecast result loading
