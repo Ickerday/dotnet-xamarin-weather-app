@@ -21,6 +21,7 @@ Just follow the generic procedures to set up Xamarin on your local environment. 
 - SQLite persistence service for forecasts
 - Simple error handling - app exceptions display as toasts
 - Splash image
+- Search history taken from SQLite DB
 
 ## Ideas for extension
 
@@ -35,4 +36,4 @@ Just follow the generic procedures to set up Xamarin on your local environment. 
 - Test iOS, different Android APIs
 - Fix Release build for potential deployment e.g. on F-Droid
 - Spinner on forecast result loading
-- Merge search history with forecast db
+- i18n
