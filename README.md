@@ -35,3 +35,4 @@ Just follow the generic procedures to set up Xamarin on your local environment. 
 - Test iOS, different Android APIs
 - Fix Release build for potential deployment e.g. on F-Droid
 - Spinner on forecast result loading
+- Merge search history with forecast db
