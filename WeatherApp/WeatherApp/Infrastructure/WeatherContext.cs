@@ -25,6 +25,7 @@ namespace WeatherApp.Shared.Infrastructure
                 Humidity = 10,
                 Latitude = 100,
                 Longitude = 100,
+                IconCode = "50d"
             }
         });
     }
