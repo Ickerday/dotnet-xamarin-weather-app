@@ -23,13 +23,13 @@ Just follow the generic procedures to set up Xamarin on your local environment. 
 - Splash image
 - Search history taken from SQLite DB
 - Custom logo and icons
+- A weather representation icon depending on weather code from OpenWeatherApi response
 
 ## Ideas for extension
 
 - Settings, e.g. units (with persistence, e.g. a BusinessParameters table in the database)
 - Autocomplete in SearchPage (from OpenWeatherApi's city ID file)
-- UI revamp (e.g. [like so](https://dribbble.com/shots/553778-thermometer))
-- Show a weather representation icon depending on weather code from OpenWeatherApi response
+- Custom renderer UI revamp? (e.g. [like so](https://dribbble.com/shots/553778-thermometer))
 - Storing OpenWeatherApi API key someplace safer
 - Handle errors better?
 - Switch from RestEase to something quicker (reflection costs performance)
