@@ -22,10 +22,11 @@ Just follow the generic procedures to set up Xamarin on your local environment. 
 - Simple error handling - app exceptions display as toasts
 - Splash image
 - Search history taken from SQLite DB
+- Custom logo and icons
 
 ## Ideas for extension
 
-- Settings (with persistence, e.g. a BusinessParameters table in the database)
+- Settings, e.g. units (with persistence, e.g. a BusinessParameters table in the database)
 - Autocomplete in SearchPage (from OpenWeatherApi's city ID file)
 - UI revamp (e.g. [like so](https://dribbble.com/shots/553778-thermometer))
 - Show a weather representation icon depending on weather code from OpenWeatherApi response
@@ -34,6 +35,8 @@ Just follow the generic procedures to set up Xamarin on your local environment. 
 - Switch from RestEase to something quicker (reflection costs performance)
 - Performance in general
 - Test iOS, different Android APIs
-- Fix Release build for potential deployment e.g. on F-Droid
 - Spinner on forecast result loading
 - i18n
+- Refreshable Widget (Android only)
+- Share forecast to FB/TT (e.g. as image)
+- Smog data
