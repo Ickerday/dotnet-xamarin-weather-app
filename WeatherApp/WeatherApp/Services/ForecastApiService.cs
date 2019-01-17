@@ -1,6 +1,6 @@
-﻿using System;
+﻿using RestEase;
+using System;
 using System.Threading.Tasks;
-using RestEase;
 using WeatherApp.Shared.Models.Dto;
 using Xamarin.Essentials;
 
@@ -38,7 +38,7 @@ namespace WeatherApp.Shared.Services
         public async Task<ApiResult> GetForecastByLocationAsync(Location location) =>
             await _client.GetForecastByLocationAsync((float)location.Latitude, (float)location.Longitude);
 
-        public async Task<Uri> GetForecastIconFromCode(string code) =>
-            await Task.FromResult(new Uri($"{IconUrl}/img/w/{code}.png"));
+        public Uri GetForecastIconUri(string iconCode) =>
+            new Uri($"{IconUrl}/img/w/{iconCode}.png");
     }
 }

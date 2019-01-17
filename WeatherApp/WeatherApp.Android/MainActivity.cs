@@ -1,4 +1,4 @@
-﻿using Android.App;
+using Android.App;
 using Android.Content.PM;
 using Android.OS;
 using Android.Runtime;
@@ -13,7 +13,7 @@ using Platform = Xamarin.Essentials.Platform;
 
 namespace WeatherApp.Droid
 {
-    [Activity(Label = "Weather",
+    [Activity(Label = "※ Weather",
         Icon = "@mipmap/icon",
         Theme = "@style/MainTheme.Splash",
         MainLauncher = true,

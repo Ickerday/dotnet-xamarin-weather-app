@@ -13,9 +13,7 @@ namespace WeatherApp.Shared.Services
 
     public class LocationService : ILocationService
     {
-        private const string CallToSearchAction = "Use the Search tab to find your location manually";
-
-        public TimeSpan Timeout { get; set; } = new TimeSpan(0, 0, 3);
+        public TimeSpan Timeout { get; set; } = new TimeSpan(0, 0, 15);
 
         public async Task<Location> GetCurrentOrLastLocation()
         {
@@ -27,15 +25,15 @@ namespace WeatherApp.Shared.Services
             }
             catch (FeatureNotSupportedException ex)
             {
-                throw new AppException($"Your phone does not support location services. {CallToSearchAction}", ex);
+                throw new AppException($"Your phone does not support location services.", ex);
             }
             catch (PermissionException ex)
             {
-                throw new AppException($"Missing permissions to use location services. {CallToSearchAction}", ex);
+                throw new AppException($"Missing permissions to use location services.", ex);
             }
             catch (Exception ex)
             {
-                throw new AppException($"Unknown error happened. Sorry! {CallToSearchAction}", ex);
+                throw new AppException($"Unknown error happened. Sorry!", ex);
             }
         }
     }

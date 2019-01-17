@@ -25,7 +25,7 @@ namespace WeatherApp.Shared.ViewModels
         private string _temperatureString = string.Empty;
         public string TemperatureString { get => _temperatureString; set => SetProperty(ref _temperatureString, value); }
 
-        private string _humidityString;
+        private string _humidityString = string.Empty;
         public string HumidityString { get => _humidityString; set => SetProperty(ref _humidityString, value); }
 
         private double _latitude;
@@ -36,7 +36,7 @@ namespace WeatherApp.Shared.ViewModels
 
         public CurrentLocationPageViewModel()
         {
-            Title = "Current location";
+            Title = "※ Weather";
             _forecastApiService = new ForecastApiService();
             _locationService = new LocationService();
             _forecastRepository = new ForecastRepository(App.Database);
@@ -88,18 +88,22 @@ namespace WeatherApp.Shared.ViewModels
             }
         }
 
-        private string GetForecastImageUri(string iconCode) =>
-            _forecastApiService.GetForecastIconFromCode(iconCode).Result.AbsoluteUri;
+        private string GetForecastImageUri(string iconCode) => _forecastApiService
+            .GetForecastIconUri(iconCode)
+            .AbsoluteUri;
+
+        private static string CreateDisplayString(object value, string unit, string separator = "") =>
+            $"{value}{separator}{unit}";
 
         private void SetProperties(Forecast forecast)
         {
-            Name = forecast.Name;
-            Country = forecast.Country;
-            TemperatureString = $"{forecast.Temperature}{forecast.TemperatureUnit}";
-            HumidityString = $"{forecast.Humidity}{forecast.HumidityUnit}";
+            Name = forecast.Name ?? string.Empty;
+            Country = forecast.Country ?? string.Empty;
+            TemperatureString = CreateDisplayString(forecast.Temperature, forecast.TemperatureUnit) ?? string.Empty;
+            HumidityString = CreateDisplayString(forecast.Humidity, forecast.HumidityUnit) ?? string.Empty;
             Latitude = forecast.Latitude;
             Longitude = forecast.Longitude;
-            ForecastImage = GetForecastImageUri(forecast.IconCode);
+            ForecastImage = GetForecastImageUri(forecast.IconCode) ?? string.Empty;
         }
     }
 }

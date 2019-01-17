@@ -12,7 +12,6 @@ namespace WeatherApp.Shared.Views
 
         public CurrentLocationPage()
         {
-            Title = "※ Weather";
             BindingContext = _viewModel = new CurrentLocationPageViewModel();
             InitializeComponent();
         }
