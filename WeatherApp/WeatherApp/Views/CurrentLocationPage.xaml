@@ -4,20 +4,66 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WeatherApp.Shared.Views.CurrentLocationPage"
              Title="{Binding Title}">
-    <StackLayout Spacing="10" Padding="10"
-                 BackgroundColor="White">
-        <FlexLayout Padding="10"
-                    BackgroundColor="Accent">
-            <Label HorizontalOptions="StartAndExpand"
-                   VerticalOptions="CenterAndExpand"
-                   Text="{Binding Name}"
-                   FontSize="20" />
-            <Label HorizontalOptions="StartAndExpand"
-                   VerticalOptions="CenterAndExpand"
-                   Text="{Binding Country}"
-                   FontSize="Small" />
-        </FlexLayout>
-        <TableView>
+    <Grid Padding="5" BackgroundColor="White">
+        <Grid.RowDefinitions>
+            <!-- 16 ROWS -->
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <!-- 8 COLS -->
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+
+        </Grid.ColumnDefinitions>
+        <!-- BASIC INFO -->
+        <StackLayout BackgroundColor="IndianRed"
+                     Grid.Row="0" Grid.RowSpan="4"
+                     Grid.Column="0" Grid.ColumnSpan="6">
+            <Label Text="{Binding Name}"
+                   HorizontalOptions="StartAndExpand"
+                   VerticalOptions="StartAndExpand"
+                   BackgroundColor="Aqua"
+                   FontSize="30" />
+            <Label Text="{Binding Country}"
+                   HorizontalOptions="StartAndExpand"
+                   VerticalOptions="StartAndExpand"
+                   BackgroundColor="IndianRed"
+                   FontSize="Medium" />
+        </StackLayout>
+
+        <Image x:Name="ForecastIcon"
+               Source="{Binding ForecastImage}"
+               BackgroundColor="Blue"
+               HorizontalOptions="CenterAndExpand"
+               VerticalOptions="CenterAndExpand"
+               Grid.Row="0" Grid.RowSpan="4"
+               Grid.Column="6" Grid.ColumnSpan="2" />
+
+        <!-- DETAILS -->
+        <TableView BackgroundColor="LawnGreen"
+                   Grid.Row="4" Grid.RowSpan="10"
+                   Grid.Column="0" Grid.ColumnSpan="8">
             <TableRoot>
                 <TableSection>
                     <TextCell Text="Temperature"
@@ -37,8 +83,12 @@
                 </TableSection>
             </TableRoot>
         </TableView>
-        <Button Padding="10"
-                Text="Get from current location"
-                Clicked="GetWeatherButton_OnClickedAsync" />
-    </StackLayout>
+
+        <!-- GET FROM LOCATION -->
+        <Button Text="Get from current location"
+                Clicked="GetWeatherButton_OnClickedAsync"
+                BackgroundColor="Accent"
+                Grid.Row="14" Grid.RowSpan="2"
+                Grid.Column="0" Grid.ColumnSpan="8" />
+    </Grid>
 </ContentPage>
