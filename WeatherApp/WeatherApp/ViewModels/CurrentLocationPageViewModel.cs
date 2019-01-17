@@ -93,7 +93,9 @@ namespace WeatherApp.Shared.ViewModels
             .AbsoluteUri;
 
         private static string CreateDisplayString(object value, string unit, string separator = "") =>
-            $"{value}{separator}{unit}";
+            value != null && !string.IsNullOrEmpty(unit)
+            ? $"{value}{separator}{unit}"
+            : string.Empty;
 
         private void SetProperties(Forecast forecast)
         {
