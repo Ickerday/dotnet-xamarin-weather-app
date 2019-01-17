@@ -1,4 +1,4 @@
-using Android.App;
+﻿using Android.App;
 using Android.Content.PM;
 using Android.OS;
 using Android.Runtime;
@@ -48,6 +48,31 @@ namespace WeatherApp.Droid
             // Required by Xamarin.Essentials
             Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
+
+        public override bool OnCreateOptionsMenu(IMenu menu)
+        {
+            MenuInflater.Inflate(Resource.Menu.SettingsMenu, menu);
+            return base.OnPrepareOptionsMenu(menu);
+        }
+
+        public override bool OnOptionsItemSelected(IMenuItem item)
+        {
+            switch (item.ItemId)
+            {
+                case Resource.Id.settings_temp_unit:
+                    Toast.MakeText(Application.Context, "Test 0", ToastLength.Short)
+                        .Show();
+                    return true;
+                case Resource.Id.settings_about:
+                    Toast.MakeText(Application.Context, "Test 1", ToastLength.Short)
+                        .Show();
+                    return true;
+                default:
+                    Toast.MakeText(Application.Context, "Invalid option selected", ToastLength.Short)
+                        .Show();
+                    return base.OnOptionsItemSelected(item);
+            }
         }
     }
 }
