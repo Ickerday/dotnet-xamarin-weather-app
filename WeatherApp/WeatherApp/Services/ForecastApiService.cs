@@ -38,7 +38,7 @@ namespace WeatherApp.Shared.Services
         public async Task<ApiResult> GetForecastByLocationAsync(Location location) =>
             await _client.GetForecastByLocationAsync((float)location.Latitude, (float)location.Longitude);
 
-        public static async Task<Uri> GetForecastIconFromCode(string code) =>
+        public async Task<Uri> GetForecastIconFromCode(string code) =>
             await Task.FromResult(new Uri($"{IconUrl}/img/w/{code}.png"));
     }
 }

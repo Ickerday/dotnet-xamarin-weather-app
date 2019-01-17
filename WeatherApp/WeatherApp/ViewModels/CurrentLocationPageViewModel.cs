@@ -1,6 +1,6 @@
-﻿using System;
+﻿using MvvmHelpers;
+using System;
 using System.Threading.Tasks;
-using MvvmHelpers;
 using WeatherApp.Shared.Exceptions;
 using WeatherApp.Shared.Models;
 using WeatherApp.Shared.Services;
@@ -18,6 +18,9 @@ namespace WeatherApp.Shared.ViewModels
 
         private string _country = string.Empty;
         public string Country { get => _country; set => SetProperty(ref _country, value); }
+
+        private string _forecastImage = string.Empty;
+        public string ForecastImage { get => _forecastImage; set => SetProperty(ref _forecastImage, value); }
 
         private string _temperatureString = string.Empty;
         public string TemperatureString { get => _temperatureString; set => SetProperty(ref _temperatureString, value); }
@@ -85,6 +88,9 @@ namespace WeatherApp.Shared.ViewModels
             }
         }
 
+        private string GetForecastImageUri(string iconCode) =>
+            _forecastApiService.GetForecastIconFromCode(iconCode).Result.AbsoluteUri;
+
         private void SetProperties(Forecast forecast)
         {
             Name = forecast.Name;
@@ -93,6 +99,7 @@ namespace WeatherApp.Shared.ViewModels
             HumidityString = $"{forecast.Humidity}{forecast.HumidityUnit}";
             Latitude = forecast.Latitude;
             Longitude = forecast.Longitude;
+            ForecastImage = GetForecastImageUri(forecast.IconCode);
         }
     }
 }

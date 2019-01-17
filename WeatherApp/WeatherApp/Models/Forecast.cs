@@ -1,5 +1,6 @@
-﻿using System;
-using SQLite;
+﻿using SQLite;
+using System;
+using System.Linq;
 using WeatherApp.Shared.Exceptions;
 using WeatherApp.Shared.Models.Dto;
 using Xamarin.Essentials;
@@ -14,6 +15,9 @@ namespace WeatherApp.Shared.Models
         [MaxLength(5)]
         public virtual string Country { get; set; } = string.Empty;
 
+        [MaxLength(5)]
+        public virtual string IconCode { get; set; } = string.Empty;
+
         public virtual double Latitude { get; set; }
 
         public virtual double Longitude { get; set; }
@@ -26,6 +30,7 @@ namespace WeatherApp.Shared.Models
 
         public virtual DateTime CheckedAt { get; set; } = DateTime.Now;
 
+
         public static Forecast FromData(ApiResult weather) => weather != null
             ? new Forecast
             {
@@ -34,7 +39,8 @@ namespace WeatherApp.Shared.Models
                 Humidity = weather.Main.Humidity,
                 Temperature = weather.Main.Temp,
                 Latitude = weather.Coord.Lat,
-                Longitude = weather.Coord.Lon
+                Longitude = weather.Coord.Lon,
+                IconCode = weather.Weather.FirstOrDefault()?.Icon ?? string.Empty
             }
             : throw new AppException("Cannot create instance of Forecast. Some of the data is null.");
 
@@ -46,7 +52,9 @@ namespace WeatherApp.Shared.Models
                 Humidity = weather.Main.Humidity,
                 Temperature = weather.Main.Temp,
                 Latitude = location.Latitude,
-                Longitude = location.Longitude
+                Longitude = location.Longitude,
+                IconCode = weather.Weather.FirstOrDefault()?.Icon ?? string.Empty,
+
             }
             : throw new AppException("Cannot create instance of Forecast. Some of the data is null.");
     }
