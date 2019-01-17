@@ -1,8 +1,8 @@
 ﻿using System;
-using WeatherApp.ViewModels;
+using WeatherApp.Shared.ViewModels;
 using Xamarin.Forms.Xaml;
 
-namespace WeatherApp.Views
+namespace WeatherApp.Shared.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SearchPage
@@ -14,8 +14,8 @@ namespace WeatherApp.Views
             BindingContext = _viewModel = new SearchPageViewModel();
             InitializeComponent();
 
-            CityEntry.Completed += OnSearchCompleted;
-            ClearHistoryButton.Clicked += OnClearHistoryButtonClicked;
+            CityEntry.Completed += Search_OnCompleted;
+            ClearHistoryButton.Clicked += ClearHistoryButton_OnClickedAsync;
         }
 
         public void OnStart()
@@ -24,10 +24,16 @@ namespace WeatherApp.Views
                 .ConfigureAwait(false);
         }
 
-        private async void OnClearHistoryButtonClicked(object sender, EventArgs e) =>
-            await _viewModel.ClearForecastHistory();
+        private async void ClearHistoryButton_OnClickedAsync(object sender, EventArgs e)
+        {
+            var clearConfirmed = await DisplayAlert("Clear history",
+                "Do you really want to clear your history?", "Yes", "No");
 
-        private void OnSearchCompleted(object sender, EventArgs e)
+            if (clearConfirmed)
+                await _viewModel.ClearForecastHistory();
+        }
+
+        private void Search_OnCompleted(object sender, EventArgs e)
         {
             var cityEntry = CityEntry.Text;
             if (string.IsNullOrEmpty(cityEntry))

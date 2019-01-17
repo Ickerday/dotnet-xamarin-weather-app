@@ -1,17 +1,15 @@
 ﻿using System;
 using System.IO;
-using WeatherApp.Infrastructure;
-using WeatherApp.Views;
-using Xamarin.Forms;
+using WeatherApp.Shared.Infrastructure;
+using WeatherApp.Shared.Views;
 using Xamarin.Forms.Xaml;
-using static System.Environment.SpecialFolder;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
-namespace WeatherApp
+namespace WeatherApp.Shared
 {
-    public partial class App : Application
+    public partial class App
     {
-        private static readonly string DbPath = Path.Combine(Environment.GetFolderPath(LocalApplicationData), "WeatherAppDb.db3");
+        private static readonly string DbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "WeatherAppDb.db3");
 
         private static WeatherContext _database;
         private readonly MainPage _masterDetailPage;

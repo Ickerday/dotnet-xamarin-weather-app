@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using WeatherApp.Infrastructure;
-using WeatherApp.Models;
+using WeatherApp.Shared.Infrastructure;
+using WeatherApp.Shared.Models;
 
-namespace WeatherApp.Services
+namespace WeatherApp.Shared.Services
 {
     public interface IRepository<TValue>
     {

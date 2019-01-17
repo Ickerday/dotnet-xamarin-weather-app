@@ -97,10 +97,9 @@
     <AndroidResource Include="Resources\mipmap-xxxhdpi\launcher_foreground.png" />
     <AndroidResource Include="Resources\drawable\splash.png" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\WeatherApp\WeatherApp.csproj">
-      <Project>{732E9B9D-EF27-49E0-B4CF-CD34BC7818A1}</Project>
+      <Project>{4c3c7b78-194c-4c13-bc41-aff898930950}</Project>
       <Name>WeatherApp</Name>
     </ProjectReference>
   </ItemGroup>

@@ -1,4 +1,4 @@
-﻿namespace WeatherApp.Models.Dto
+﻿namespace WeatherApp.Shared.Models.Dto
 {
     public class Wind
     {

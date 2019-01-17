@@ -1,8 +1,8 @@
 ﻿using SQLite;
 using System;
-using WeatherApp.Models;
+using WeatherApp.Shared.Models;
 
-namespace WeatherApp.Infrastructure
+namespace WeatherApp.Shared.Infrastructure
 {
     public class WeatherContext : SQLiteAsyncConnection
     {
@@ -10,10 +10,8 @@ namespace WeatherApp.Infrastructure
         {
             CreateTableAsync<Forecast>().Wait();
 
-#if DEBUG
             if (Table<Forecast>().CountAsync().Result == 0)
                 Seed();
-#endif
         }
 
         private void Seed()

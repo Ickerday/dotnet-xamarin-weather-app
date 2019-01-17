@@ -3,11 +3,11 @@ using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
-using WeatherApp.Exceptions;
-using WeatherApp.Models;
-using WeatherApp.Services;
+using WeatherApp.Shared.Exceptions;
+using WeatherApp.Shared.Models;
+using WeatherApp.Shared.Services;
 
-namespace WeatherApp.ViewModels
+namespace WeatherApp.Shared.ViewModels
 {
     public class SearchPageListItem
     {

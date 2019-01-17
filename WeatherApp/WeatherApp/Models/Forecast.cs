@@ -1,10 +1,10 @@
-﻿using SQLite;
-using System;
-using WeatherApp.Exceptions;
-using WeatherApp.Models.Dto;
+﻿using System;
+using SQLite;
+using WeatherApp.Shared.Exceptions;
+using WeatherApp.Shared.Models.Dto;
 using Xamarin.Essentials;
 
-namespace WeatherApp.Models
+namespace WeatherApp.Shared.Models
 {
     public class Forecast : EntityBase
     {

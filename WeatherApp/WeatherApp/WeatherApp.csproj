@@ -2,6 +2,14 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>WeatherApp.Shared</AssemblyName>
+    <RootNamespace>WeatherApp.Shared</RootNamespace>
+    <ApplicationIcon />
+    <Win32Resource />
+    <Authors>Bartosz Jędrecki</Authors>
+    <Company>Bartosz Jędrecki</Company>
+    <Product>WeatherApp</Product>
+    <NeutralLanguage>en</NeutralLanguage>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

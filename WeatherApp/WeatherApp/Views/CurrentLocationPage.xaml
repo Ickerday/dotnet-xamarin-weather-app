@@ -2,43 +2,43 @@
 
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="WeatherApp.Views.CurrentLocationPage"
-             Title="※ Weather">
-  <StackLayout Spacing="10" Padding="10"
-               BackgroundColor="White">
-    <StackLayout Padding="10"
-                 BackgroundColor="Accent">
-      <Label HorizontalOptions="CenterAndExpand"
-             VerticalOptions="CenterAndExpand"
-             Text="{Binding Name}"
-             FontSize="20" />
-      <Label HorizontalOptions="CenterAndExpand"
-             VerticalOptions="CenterAndExpand"
-             Text="{Binding Country}"
-             FontSize="Small" />
+             x:Class="WeatherApp.Shared.Views.CurrentLocationPage"
+             Title="{Binding Title}">
+    <StackLayout Spacing="10" Padding="10"
+                 BackgroundColor="White">
+        <FlexLayout Padding="10"
+                    BackgroundColor="Accent">
+            <Label HorizontalOptions="StartAndExpand"
+                   VerticalOptions="CenterAndExpand"
+                   Text="{Binding Name}"
+                   FontSize="20" />
+            <Label HorizontalOptions="StartAndExpand"
+                   VerticalOptions="CenterAndExpand"
+                   Text="{Binding Country}"
+                   FontSize="Small" />
+        </FlexLayout>
+        <TableView>
+            <TableRoot>
+                <TableSection>
+                    <TextCell Text="Temperature"
+                              Detail="{Binding TemperatureString}" />
+                </TableSection>
+                <TableSection>
+                    <TextCell Text="Humidity"
+                              Detail="{Binding HumidityString}" />
+                </TableSection>
+                <TableSection>
+                    <TextCell Text="Latitude"
+                              Detail="{Binding Latitude}" />
+                </TableSection>
+                <TableSection>
+                    <TextCell Text="Longitude"
+                              Detail="{Binding Longitude}" />
+                </TableSection>
+            </TableRoot>
+        </TableView>
+        <Button Padding="10"
+                Text="Get from current location"
+                Clicked="GetWeatherButton_OnClickedAsync" />
     </StackLayout>
-    <TableView>
-      <TableRoot>
-        <TableSection>
-          <TextCell Text="Temperature"
-                    Detail="{Binding TemperatureString}" />
-        </TableSection>
-        <TableSection>
-          <TextCell Text="Humidity"
-                    Detail="{Binding HumidityString}" />
-        </TableSection>
-        <TableSection>
-          <TextCell Text="Latitude"
-                    Detail="{Binding Latitude}" />
-        </TableSection>
-        <TableSection>
-          <TextCell Text="Longitude"
-                    Detail="{Binding Longitude}" />
-        </TableSection>
-      </TableRoot>
-    </TableView>
-    <Button Padding="10"
-            Text="Get from current location"
-            Clicked="OnGetWeatherButtonClickedAsync" />
-  </StackLayout>
 </ContentPage>

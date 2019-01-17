@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Threading.Tasks;
-using WeatherApp.ViewModels;
+using WeatherApp.Shared.ViewModels;
 using Xamarin.Forms.Xaml;
 
-namespace WeatherApp.Views
+namespace WeatherApp.Shared.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CurrentLocationPage
@@ -12,11 +12,12 @@ namespace WeatherApp.Views
 
         public CurrentLocationPage()
         {
+            Title = "※ Weather";
             BindingContext = _viewModel = new CurrentLocationPageViewModel();
             InitializeComponent();
         }
 
-        protected async void OnGetWeatherButtonClickedAsync(object sender, EventArgs args)
+        protected async void GetWeatherButton_OnClickedAsync(object sender, EventArgs args)
         {
             try
             {
@@ -28,7 +29,7 @@ namespace WeatherApp.Views
             }
         }
 
-        public async Task OnInputFromMasterPageAsync(string name)
+        public async Task MasterPage_OnInputAsync(string name)
         {
             try
             {

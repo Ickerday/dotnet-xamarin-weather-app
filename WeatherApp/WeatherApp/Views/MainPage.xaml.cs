@@ -1,9 +1,9 @@
 ﻿using System;
-using WeatherApp.ViewModels;
+using WeatherApp.Shared.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace WeatherApp.Views
+namespace WeatherApp.Shared.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainPage
@@ -12,9 +12,9 @@ namespace WeatherApp.Views
         {
             InitializeComponent();
 
-            SearchMaster.PreviousCitiesListView.ItemSelected += OnPreviousCitySelected;
-            SearchMaster.CityEntry.Completed += OnSearchCompleted;
-            SearchMaster.SearchButton.Clicked += OnSearchCompleted;
+            SearchMaster.PreviousCitiesListView.ItemSelected += PreviousCities_OnItemSelectedAsync;
+            SearchMaster.CityEntry.Completed += Search_OnCompletedAsync;
+            SearchMaster.SearchButton.Clicked += Search_OnCompletedAsync;
         }
 
         public void OnStart()
@@ -23,17 +23,17 @@ namespace WeatherApp.Views
             SearchMaster.OnStart();
         }
 
-        public async void OnPreviousCitySelected(object sender, SelectedItemChangedEventArgs e)
+        public async void PreviousCities_OnItemSelectedAsync(object sender, SelectedItemChangedEventArgs e)
         {
             if (!(e.SelectedItem is SearchPageListItem item))
                 return;
 
-            await LocationDetail.OnInputFromMasterPageAsync(item.Name);
+            await LocationDetail.MasterPage_OnInputAsync(item.Name);
             SearchMaster.PreviousCitiesListView.SelectedItem = null;
             IsPresented = false;
         }
 
-        public async void OnSearchCompleted(object sender, EventArgs e)
+        public async void Search_OnCompletedAsync(object sender, EventArgs e)
         {
             var cityEntry = SearchMaster.CityEntry.Text;
             if (string.IsNullOrEmpty(cityEntry))
@@ -41,7 +41,7 @@ namespace WeatherApp.Views
 
             SearchMaster.CityEntry.Text = string.Empty;
 
-            await LocationDetail.OnInputFromMasterPageAsync(cityEntry);
+            await LocationDetail.MasterPage_OnInputAsync(cityEntry);
             IsPresented = false;
         }
     }

@@ -1,15 +1,15 @@
-﻿using MvvmHelpers;
-using System;
+﻿using System;
 using System.Threading.Tasks;
-using WeatherApp.Exceptions;
-using WeatherApp.Models;
-using WeatherApp.Services;
+using MvvmHelpers;
+using WeatherApp.Shared.Exceptions;
+using WeatherApp.Shared.Models;
+using WeatherApp.Shared.Services;
 
-namespace WeatherApp.ViewModels
+namespace WeatherApp.Shared.ViewModels
 {
     public class CurrentLocationPageViewModel : BaseViewModel
     {
-        private readonly WeatherApiService _weatherService;
+        private readonly ForecastApiService _forecastApiService;
         private readonly ILocationService _locationService;
         private readonly IRepository<Forecast> _forecastRepository;
 
@@ -34,7 +34,7 @@ namespace WeatherApp.ViewModels
         public CurrentLocationPageViewModel()
         {
             Title = "Current location";
-            _weatherService = new WeatherApiService();
+            _forecastApiService = new ForecastApiService();
             _locationService = new LocationService();
             _forecastRepository = new ForecastRepository(App.Database);
         }
@@ -44,7 +44,7 @@ namespace WeatherApp.ViewModels
             try
             {
                 var location = await _locationService.GetCurrentOrLastLocation();
-                var weather = await _weatherService.GetByLocationAsync(location);
+                var weather = await _forecastApiService.GetForecastByLocationAsync(location);
                 var forecast = Forecast.FromData(location, weather);
 
                 await _forecastRepository.SaveAsync(forecast);
@@ -60,7 +60,7 @@ namespace WeatherApp.ViewModels
         {
             try
             {
-                var weather = await _weatherService.GetByCityNameAsync(name);
+                var weather = await _forecastApiService.GetForecastByCityNameAsync(name);
                 var forecast = Forecast.FromData(weather);
 
                 await _forecastRepository.SaveAsync(forecast);

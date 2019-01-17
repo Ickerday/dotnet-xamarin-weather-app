@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace WeatherApp.Exceptions
+namespace WeatherApp.Shared.Exceptions
 {
     public class AppException : Exception
     {

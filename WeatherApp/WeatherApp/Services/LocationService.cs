@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
-using WeatherApp.Exceptions;
+using WeatherApp.Shared.Exceptions;
 using Xamarin.Essentials;
 
-namespace WeatherApp.Services
+namespace WeatherApp.Shared.Services
 {
     public interface ILocationService
     {

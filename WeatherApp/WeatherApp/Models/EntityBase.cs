@@ -1,6 +1,6 @@
 ﻿using SQLite;
 
-namespace WeatherApp.Models
+namespace WeatherApp.Shared.Models
 {
     public class EntityBase
     {

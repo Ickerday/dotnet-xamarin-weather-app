@@ -2,7 +2,7 @@
 
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="WeatherApp.Views.SearchPage"
+             x:Class="WeatherApp.Shared.Views.SearchPage"
              Padding="0,30,10,0"
              Icon="hamburger.png"
              Title="{Binding Title}">
