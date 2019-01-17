@@ -14,32 +14,18 @@ namespace WeatherApp.Shared.Infrastructure
                 Seed();
         }
 
-        private void Seed()
+        private void Seed() => InsertAllAsync(new[]
         {
-            var seed = new[]
+            new Forecast
             {
-                new Forecast
-                {
-                    Name = "Kraków",
-                    Country = "PL",
-                    CheckedAt = DateTime.Now + TimeSpan.FromHours(1),
-                    Temperature = 10,
-                    Humidity = 10,
-                    Latitude = 100,
-                    Longitude = 100,
-                },
-                new Forecast
-                {
-                    Name = "Berlin",
-                    Country = "DE",
-                    CheckedAt = DateTime.Now,
-                    Temperature = 30,
-                    Humidity = 100,
-                    Latitude = 10,
-                    Longitude = -100
-                }
-            };
-            InsertAllAsync(seed);
-        }
+                Name = "Kraków",
+                Country = "PL",
+                CheckedAt = DateTime.Now + TimeSpan.FromHours(1),
+                Temperature = 10,
+                Humidity = 10,
+                Latitude = 100,
+                Longitude = 100,
+            }
+        });
     }
 }
