@@ -1,5 +1,6 @@
-﻿using MvvmHelpers;
+using MvvmHelpers;
 using System;
+using System.Globalization;
 using System.Threading.Tasks;
 using WeatherApp.Shared.Exceptions;
 using WeatherApp.Shared.Models;
@@ -27,6 +28,9 @@ namespace WeatherApp.Shared.ViewModels
 
         private string _humidityString = string.Empty;
         public string HumidityString { get => _humidityString; set => SetProperty(ref _humidityString, value); }
+
+        private string _checkedAt;
+        public string CheckedAt { get => _checkedAt; set => SetProperty(ref _checkedAt, value); }
 
         private double _latitude;
         public double Latitude { get => _latitude; set => SetProperty(ref _latitude, value); }
@@ -106,6 +110,7 @@ namespace WeatherApp.Shared.ViewModels
             Latitude = forecast.Latitude;
             Longitude = forecast.Longitude;
             ForecastImage = GetForecastImageUri(forecast.IconCode) ?? string.Empty;
+            CheckedAt = forecast.CheckedAt.ToString(CultureInfo.InvariantCulture);
         }
     }
 }

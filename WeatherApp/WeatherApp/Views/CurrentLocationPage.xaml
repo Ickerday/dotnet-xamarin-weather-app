@@ -4,7 +4,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WeatherApp.Shared.Views.CurrentLocationPage"
              Title="{Binding Title}">
-    <Grid Padding="5" BackgroundColor="White">
+    <Grid Padding="5"
+          RowSpacing="5"
+          ColumnSpacing="5"
+          BackgroundColor="White">
         <Grid.RowDefinitions>
             <!-- 16 ROWS -->
             <RowDefinition Height="*" />
@@ -37,32 +40,29 @@
 
         </Grid.ColumnDefinitions>
         <!-- BASIC INFO -->
-        <StackLayout BackgroundColor="IndianRed"
+        <StackLayout Padding="10"
                      Grid.Row="0" Grid.RowSpan="4"
                      Grid.Column="0" Grid.ColumnSpan="6">
             <Label Text="{Binding Name}"
                    HorizontalOptions="StartAndExpand"
                    VerticalOptions="StartAndExpand"
-                   BackgroundColor="Aqua"
                    FontSize="30" />
             <Label Text="{Binding Country}"
                    HorizontalOptions="StartAndExpand"
                    VerticalOptions="StartAndExpand"
-                   BackgroundColor="IndianRed"
                    FontSize="Medium" />
         </StackLayout>
 
         <Image x:Name="ForecastIcon"
                Source="{Binding ForecastImage}"
-               BackgroundColor="Blue"
+               Scale="4"
                HorizontalOptions="CenterAndExpand"
                VerticalOptions="CenterAndExpand"
                Grid.Row="0" Grid.RowSpan="4"
                Grid.Column="6" Grid.ColumnSpan="2" />
 
         <!-- DETAILS -->
-        <TableView BackgroundColor="LawnGreen"
-                   Grid.Row="4" Grid.RowSpan="10"
+        <TableView Grid.Row="4" Grid.RowSpan="10"
                    Grid.Column="0" Grid.ColumnSpan="8">
             <TableRoot>
                 <TableSection>
@@ -72,6 +72,10 @@
                 <TableSection>
                     <TextCell Text="Humidity"
                               Detail="{Binding HumidityString}" />
+                </TableSection>
+                <TableSection>
+                    <TextCell Text="Checked At"
+                              Detail="{Binding CheckedAt}" />
                 </TableSection>
                 <TableSection>
                     <TextCell Text="Latitude"
