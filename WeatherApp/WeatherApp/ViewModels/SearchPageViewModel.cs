@@ -32,7 +32,7 @@ namespace WeatherApp.Shared.ViewModels
 
         public void AddToPreviousCities(string cityName)
         {
-            if (string.IsNullOrEmpty(cityName))
+            if (string.IsNullOrEmpty(cityName) || PreviousCities.Any(c => c.Name.Contains(cityName)))
                 return;
 
             PreviousCities.Add(new SearchPageListItem(cityName));
