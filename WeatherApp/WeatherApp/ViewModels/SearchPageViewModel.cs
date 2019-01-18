@@ -43,7 +43,10 @@ namespace WeatherApp.Shared.ViewModels
             try
             {
                 var history = await _forecastRepository.GetAsync();
-                var listItems = history.Select(f => new SearchPageListItem($"{f.Name}, {f.Country}"));
+                var listItems = history.OrderByDescending(f => f.CheckedAt)
+                    .Select(f => new SearchPageListItem($"{f.Name}, {f.Country}"))
+                    .GroupBy(s => s.Name.ToLower())
+                    .Select(x => x.FirstOrDefault());
 
                 PreviousCities.Clear();
                 foreach (var item in listItems)
