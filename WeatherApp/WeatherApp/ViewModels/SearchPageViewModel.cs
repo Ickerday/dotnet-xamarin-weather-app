@@ -25,7 +25,7 @@ namespace WeatherApp.Shared.ViewModels
 
         public SearchPageViewModel()
         {
-            Title = "Find city";
+            Title = "Find manually";
             _forecastRepository = new ForecastRepository(App.Database);
             PreviousCities = new ObservableCollection<SearchPageListItem>();
         }

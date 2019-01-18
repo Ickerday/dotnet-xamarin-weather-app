@@ -40,7 +40,7 @@ namespace WeatherApp.Shared.ViewModels
 
         public CurrentLocationPageViewModel()
         {
-            Title = "※ Weather";
+            Title = "From Location";
             _forecastApiService = new ForecastApiService();
             _locationService = new LocationService();
             _forecastRepository = new ForecastRepository(App.Database);

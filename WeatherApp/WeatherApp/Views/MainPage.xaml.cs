@@ -30,7 +30,6 @@ namespace WeatherApp.Shared.Views
 
             await LocationDetail.MasterPage_OnInputAsync(item.Name);
             SearchMaster.PreviousCitiesListView.SelectedItem = null;
-            IsPresented = false;
         }
 
         public async void Search_OnCompletedAsync(object sender, EventArgs e)
@@ -42,7 +41,6 @@ namespace WeatherApp.Shared.Views
             SearchMaster.CityEntry.Text = string.Empty;
 
             await LocationDetail.MasterPage_OnInputAsync(cityEntry);
-            IsPresented = false;
         }
     }
 }
